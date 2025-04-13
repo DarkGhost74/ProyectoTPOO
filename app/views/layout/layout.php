@@ -31,14 +31,18 @@
         </ul>
     </nav>
     <div id="superior">
-        <ul>
-            <li>
-                <img src="../../../public/images/profile-default.png" alt="Foto de perfil">
-            </li>
-            <li>
-                <P>Nombre</P>
-            </li>
-        </ul>
+        <a href="">
+            <img src="../../../public/images/profile-default.png" alt="Foto de perfil">
+            Nombre
+        </a>
+    </div>
+    <div id="principal">
+        <div id="contenedor">
+
+        </div>
+        <footer>
+            
+        </footer>
     </div>
 </body>
 
