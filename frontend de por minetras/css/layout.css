@@ -1,0 +1,180 @@
+:root {
+    --colorPrincipal: #970747;
+    --colorSecundario: #fef6ec;
+}
+
+@font-face {
+    font-family: 'Roboto';
+    src: url('../fonts/Roboto/static/Roboto-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Roboto';
+    src: url('../fonts/Roboto/static/Roboto-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal; /* corregido de 'bold' a 'normal' */
+}
+
+/* Reset general */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+}
+
+/* ================== Elementos base ================== */
+a {
+    font-weight: bold;
+    text-decoration: none;
+    transition: background-color 0.5s ease;
+}
+
+h1 {
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+}
+
+/* ================== Barra superior ================== */
+#superior {
+    width: 100%;
+    height: 60px;
+    background-color: var(--colorPrincipal);
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: grid;
+    align-items: center;
+    justify-content: right;
+}
+
+#superior img {
+    height: 50px;
+    border-radius: 50%;
+}
+
+#superior a {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 10px;
+    align-items: center;
+    text-align: left;
+    color: var(--colorSecundario);
+    margin-right: 10px;
+    border-radius: 999px;
+    padding-right: 10px;
+}
+
+#superior a:hover {
+    background-color: var(--colorSecundario);
+    color: var(--colorPrincipal);
+}
+
+/* ================== Barra lateral (sidebar) ================== */
+nav {
+    width: 250px;
+    height: calc(100dvh - 60px);
+    background-color: var(--colorSecundario);
+    position: fixed;
+    top: 60px;
+    left: 0;
+    border-right: 5px solid var(--colorPrincipal);
+}
+
+nav img {
+    width: 100%;
+}
+
+nav .primero {
+    border-top: 5px solid var(--colorPrincipal);
+}
+
+nav ul {
+    padding: 0;
+    margin: 0;
+}
+
+nav li {
+    list-style-type: none;
+}
+
+nav a {
+    border-bottom: 5px solid var(--colorPrincipal);
+    height: 50px;
+    display: grid;
+    place-items: center;
+    color: var(--colorPrincipal);
+    font-size: 30px;
+}
+
+nav a:hover, .activo {
+    background-color: var(--colorPrincipal);
+    color: var(--colorSecundario);
+}
+
+/* ================== Contenido principal ================== */
+#principal {
+    min-height: calc(100dvh - 60px);
+    display: grid;
+    grid-template-rows: 1fr auto;
+    margin-left: 250px;
+    margin-top: 60px;
+}
+
+#contenedor {
+    padding: 30px;
+}
+
+/* ================== Botones ================== */
+.btn {
+    color: var(--colorSecundario);
+    background-color: var(--colorPrincipal);
+}
+
+.btn:hover {
+    color: var(--colorPrincipal);
+    background-color: var(--colorSecundario);
+    border: 1px solid var(--colorPrincipal);
+}
+
+/* ================== Footer ================== */
+footer {
+    background-color: var(--colorPrincipal);
+    min-height: 230px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    padding: 40px 20px 0 20px;
+}
+
+footer div {
+    text-align: center;
+}
+
+footer #segundo {
+    padding: 0 50px;
+}
+
+footer h1 {
+    color: var(--colorSecundario);
+    font-size: 100px;
+    margin: 0;
+}
+
+footer #subtitulo {
+    font-size: 27px;
+}
+
+footer p, footer a {
+    font-weight: normal;
+    color: var(--colorSecundario);
+    margin: 0;
+}
+
+footer a {
+    font-size: 25px;
+}

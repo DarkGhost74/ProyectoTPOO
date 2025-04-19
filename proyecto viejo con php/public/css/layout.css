@@ -51,12 +51,12 @@ nav a {
     place-items: center;
     font-family: 'Roboto', sans-serif;
     font-weight: bold;
-    text-decoration: none;
     color: var(--colorPrincipal);
     font-size: 30px;
 }
 
-nav a:hover {
+
+nav a:hover, .activo {
     background-color: var(--colorPrincipal);
     color: var(--colorSecundario);
 }
@@ -93,7 +93,6 @@ nav li {
     grid-template-columns: auto 1fr;
     gap: 10px;
     align-items: center;
-    text-decoration: none;
     text-align: left;
     font-family: 'Roboto', sans-serif;
     font-weight: bold;
@@ -110,6 +109,7 @@ nav li {
 
 a {
     transition: background-color 0.5s ease;
+    text-decoration: none;
 }
 
 /*Contenido*/
@@ -121,7 +121,65 @@ a {
     margin-top: 60px;
 }
 
+#contenedor {
+    padding: 30px;
+}
+
+h1 {
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+}
+
+.btn {
+    color: var(--colorSecundario);
+    background-color: var(--colorPrincipal);
+}
+
+.btn:hover {
+    color: var(--colorPrincipal);
+    background-color: var(--colorSecundario);
+    border: 1px solid var(--colorPrincipal);
+}
+
+/*Footer*/
 footer {
     background-color: var(--colorPrincipal);
     min-height: 200px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 40px;
+}
+
+footer div {
+    text-align: center;
+}
+
+footer #segundo {
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+footer h1 {
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    color: var(--colorSecundario);
+    font-size: 100px;
+    margin: 0;
+}
+
+footer p, a {
+    font-family: 'Roboto', sans-serif;
+    font-weight: normal;
+    color: var(--colorSecundario);
+    margin: 0;
+}
+
+footer #subtitulo {
+    font-size: 27px;
+}
+
+footer a {
+    font-size: 25px;
 }
