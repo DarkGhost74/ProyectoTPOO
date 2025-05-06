@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'core/css/layout.css' %}">
+    <link rel="stylesheet" href="{% static 'core/css/login.css' %}">
+    <link rel="icon" href="{% static 'core/images/logo-icon.png' %}" type="image/png">
+</head>
+<body>
+    <div id="imgContainer">
+        <img src="{% static 'core/images/logo.jpg' %}" alt="Logo">
+    </div>
+    <div id="login">
+        <h1>LOGIN</h1>
+        <form action="{% url 'login' %}" method="POST">
+            {% csrf_token %}
+            {{form.as_p}}
+            <button>Ingresar</button>
+        </form>
+        <p id="textoError">{{error}}</p>
+    </div>
+</body>
+</html>

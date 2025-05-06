@@ -1,0 +1,80 @@
+body {
+    background-color: var(--colorSecundario);
+    display: grid;
+    justify-content: center;
+    grid-template-rows: 300px 1fr;
+}
+
+#imgContainer {
+    display: grid;
+    place-items: center;
+}
+
+img {
+    height: 300px;
+}
+
+#login {
+    background-color: var(--colorPrincipal);
+    width: 500px;
+    padding: 0 15px;
+    border-radius: 15px;
+}
+
+h1, label, p {
+    color: white;
+}
+
+h1 {
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    font-size: 50PX;
+    text-align: center;
+}
+
+form {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 0 10px 15px;
+    gap: 16px;
+}
+
+input {
+    background: none;
+    border: 0;
+    outline: 0;
+    height: 40px;
+    width: 100%;
+    border-bottom: 2px solid white;
+    color: white;
+    font-size: 16px;
+}
+
+input::placeholder {
+    color: white;
+}
+
+button {
+    float: right;
+    background-color: white;
+    color: var(--colorPrincipal);
+    border: 2px solid var(--colorPrincipal);
+    border-radius: 24px;
+    padding: 10px 16px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color .3s ease;
+}
+
+button:hover {
+    background-color: var(--colorPrincipal);
+    color: white;
+    border: 2px solid white;
+}
+
+#textoError {
+    margin-bottom: 20px;
+    text-align: center;
+}

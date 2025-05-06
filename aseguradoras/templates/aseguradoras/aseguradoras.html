@@ -1,0 +1,27 @@
+{% extends 'core/base.html' %}
+
+{% load static %}
+
+{% block title %}Aseguradoras{% endblock %}
+
+{% block content %}
+<h1>Aseguradoras</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Imagen</th>
+        </tr>
+    </thead>
+    <tbody id="contenido">       
+        {% for aseguradora in aseguradoras %}
+            <tr>
+                <th scope="row">{{aseguradora.id}}</th>
+                <td>{{aseguradora.nombre}}</td>
+                <td><img src="{{aseguradora.imagen.url}}" alt=""></td>
+            </tr>    
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

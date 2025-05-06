@@ -1,0 +1,14 @@
+{% extends 'core/base.html' %}
+
+{% load static %}
+
+{% block title %}Reportes{% endblock %}
+
+{% block content %}
+<h1>Reportes</h1>
+<div id="enlaces">
+    <a href="{% url 'reporte_polizas' %}" class="reportes">Pólizas</a>
+    <a href="{% url 'reporte_AgAs' %}" class="reportes">Agente y aseguradora</a>
+    <a href="{% url 'reporte_AsTP' %}" class="reportes">Aseguradora y tipo de póliza</a>
+</div>
+{% endblock %}

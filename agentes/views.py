@@ -1,0 +1,20 @@
+from django.shortcuts import render
+from .models import Agente
+from django.contrib.auth.decorators import login_required
+
+@login_required
+def agentes(request):
+    query = request.GET.get('q')
+    if query:
+        agentes = Agente.objects.filter(
+            id__icontains=query
+        ) | Agente.objects.filter(
+            nombre__icontains=query
+        ) | Agente.objects.filter(
+            apellidopaterno__icontains=query
+        ) | Agente.objects.filter(
+            apellidomaterno__icontains=query
+        )
+    else:
+        agentes = Agente.objects.all()
+    return render(request, "agentes/agentes.html", {'agentes':agentes})

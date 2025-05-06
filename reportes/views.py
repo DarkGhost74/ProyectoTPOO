@@ -1,0 +1,66 @@
+from django.shortcuts import render
+from django.db.models import Q
+from polizas.models import Poliza
+from core.models import Detalleagas, Detalleastp
+from django.contrib.auth.decorators import login_required
+
+@login_required
+def menu(request):
+    return render(request, "reportes/menu.html")
+
+@login_required
+def reporte_polizas(request):
+    query = request.GET.get('q')
+    if query:
+        polizas = Poliza.objects.select_related(
+            'clienteid', 'agenteid', 'aseguradoraid', 'tipopolizaid', 'formapagoid', 'metodopagoid'
+        ).filter(
+            Q(id__icontains=query) |
+            Q(clienteid__nombre__icontains=query) |
+            Q(clienteid__appaterno__icontains=query) |
+            Q(clienteid__apmaterno__icontains=query) |
+            Q(agenteid__nombre__icontains=query) |
+            Q(agenteid__apellidopaterno__icontains=query) |
+            Q(agenteid__apellidomaterno__icontains=query) |
+            Q(aseguradoraid__nombre__icontains=query) |
+            Q(tipopolizaid__nombre__icontains=query) |
+            Q(formapagoid__forma__icontains=query) |
+            Q(metodopagoid__metodo__icontains=query)
+        )
+    else:
+        polizas = Poliza.objects.all()
+    return render(request, "reportes/polizas.html", {'polizas':polizas})
+
+@login_required
+def reporte_AgAs(request):
+    query = request.GET.get('q')
+    if query:
+        detalles = Detalleagas.objects.select_related(
+            'agenteid', 'aseguradoraid'
+        ).filter(
+            Q(agenteid__id__icontains=query) |
+            Q(agenteid__nombre__icontains=query) |
+            Q(agenteid__apellidopaterno__icontains=query) |
+            Q(agenteid__apellidomaterno__icontains=query) |
+            Q(aseguradoraid__id__icontains=query) |
+            Q(aseguradoraid__nombre__icontains=query)
+        )
+    else:
+        detalles = Detalleagas.objects.all()
+    return render(request, "reportes/AgAs.html", {'detalles':detalles})
+
+@login_required
+def reporte_AsTP(request):
+    query = request.GET.get('q')
+    if query:
+        detalles = Detalleastp.objects.select_related(
+            'aseguradoraid', 'tipopolizaid'
+        ).filter(
+            Q(aseguradoraid__id__icontains=query) |
+            Q(aseguradoraid__nombre__icontains=query) |
+            Q(tipopolizaid__id__icontains=query) |
+            Q(tipopolizaid__nombre__icontains=query)
+        )
+    else:
+        detalles = Detalleastp.objects.all()
+    return render(request, "reportes/AsTP.html", {'detalles':detalles})

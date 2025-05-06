@@ -1,0 +1,323 @@
+:root {
+    --colorPrincipal: #970747;
+    --colorSecundario: #fef6ec;
+}
+
+@font-face {
+    font-family: 'Roboto';
+    src: url('../fonts/Roboto/static/Roboto-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Roboto';
+    src: url('../fonts/Roboto/static/Roboto-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+    /* corregido de 'bold' a 'normal' */
+}
+
+/* Reset general */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+}
+
+/* ================== Elementos base ================== */
+a, button {
+    font-weight: bold;
+    text-decoration: none;
+    transition: background-color 0.5s ease;
+}
+
+h1 {
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+}
+
+/* ================== Barra superior ================== */
+#superior {
+    width: 100%;
+    height: 60px;
+    background-color: var(--colorPrincipal);
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: grid;
+    align-items: center;
+    justify-content: right;
+}
+
+#searchbar {
+    position: fixed;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.custom-form {
+    --timing: 0.3s;
+    --width-of-input: 500px;
+    --height-of-input: 40px;
+    --border-height: 2px;
+    --input-bg: #ffffff;
+    --border-color: #2f2ee9;
+    --border-radius: 30px;
+    --after-border-radius: 1px;
+
+    position: relative;
+    width: var(--width-of-input);
+    height: var(--height-of-input);
+    display: flex;
+    align-items: center;
+    padding-inline: 0.8em;
+    border-radius: var(--border-radius);
+    transition: border-radius 0.5s ease;
+    background: var(--input-bg);
+}
+
+/* remove default button styling */
+.custom-form__button,
+.custom-form__reset {
+    border: none;
+    background: none;
+    color: #000000;
+}
+
+/* input styling */
+.custom-form__input {
+    font-size: 0.9rem;
+    background-color: transparent;
+    width: 100%;
+    height: 100%;
+    padding-inline: 0.5em;
+    padding-block: 0.7em;
+    border: none;
+}
+
+.custom-form__input:focus {
+    outline: none;
+}
+
+/* animated bottom border */
+.custom-form::before {
+    content: "";
+    position: absolute;
+    background: var(--border-color);
+    transform: scaleX(0);
+    transform-origin: center;
+    width: 100%;
+    height: var(--border-height);
+    left: 0;
+    bottom: 0;
+    border-radius: 1px;
+    transition: transform var(--timing) ease;
+}
+
+.custom-form:focus-within {
+    border-radius: var(--after-border-radius);
+}
+
+.custom-form:focus-within::before {
+    transform: scale(1);
+}
+
+/* close button hidden by default */
+.custom-form__reset {
+    opacity: 0;
+    visibility: hidden;
+}
+
+/* show close button when text is typed */
+.custom-form__input:not(:placeholder-shown)~.custom-form__reset {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* icon sizing */
+.custom-form svg {
+    width: 17px;
+    margin-top: 3px;
+}
+
+#superior img {
+    height: 50px;
+    border-radius: 50%;
+}
+
+#superior button {
+    height: 50px;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 10px;
+    align-items: center;
+    text-align: left;
+    color: var(--colorSecundario);
+    margin-right: 10px;
+    border: none;
+    border-radius: 999px;
+    padding-top: 0%;
+    padding-left: 0%;
+    padding-right: 10px;
+}
+
+#superior button:hover {
+    background-color: var(--colorSecundario);
+    color: var(--colorPrincipal);
+}
+
+/* ================== Barra lateral (sidebar) ================== */
+nav {
+    width: 250px;
+    height: calc(100dvh - 60px);
+    background-color: var(--colorSecundario);
+    position: fixed;
+    top: 60px;
+    left: 0;
+    border-right: 5px solid var(--colorPrincipal);
+}
+
+nav img {
+    width: 100%;
+}
+
+nav .primero {
+    border-top: 5px solid var(--colorPrincipal);
+}
+
+nav ul {
+    padding: 0;
+    margin: 0;
+}
+
+nav li {
+    list-style-type: none;
+}
+
+nav a {
+    border-bottom: 5px solid var(--colorPrincipal);
+    height: 50px;
+    display: grid;
+    place-items: center;
+    color: var(--colorPrincipal);
+    font-size: 30px;
+}
+
+nav a:hover,
+.activo {
+    background-color: var(--colorPrincipal);
+    color: var(--colorSecundario);
+}
+
+.crear {
+    border: 5px solid var(--colorPrincipal);
+    border-radius: 10px;
+    margin: 60px 10%;
+    width: 80%;
+    height: 100px;
+    font-size: 25px;
+    display: block;
+    padding: 25px 9px;
+}
+
+/* ================== Contenido principal ================== */
+#principal {
+    min-height: calc(100dvh - 60px);
+    display: grid;
+    grid-template-rows: 1fr auto;
+    margin-left: 250px;
+    margin-top: 60px;
+}
+
+#contenedor {
+    padding: 30px;
+}
+
+td img {
+    height: 40px;
+}
+
+#contenedorDatos {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+#enlaces {
+    display: grid;
+    grid-template-rows: repeat(3, 1fr);
+}
+
+#contenedor .reportes {
+    color: var(--colorSecundario);
+    display: grid;
+    place-items: center;
+    height: 80px;
+    width: 500px;
+    border-radius: 10px;
+    font-size: 25px;
+    text-decoration: none;
+    background-color: var(--colorPrincipal);
+    margin: 10px 0
+}
+
+#contenedor .reportes:hover {
+    background-color: var(--colorSecundario);
+    color: var(--colorPrincipal);
+    border: 3px solid var(--colorPrincipal);
+}
+
+/* ================== Botones ================== */
+.btn {
+    color: var(--colorSecundario);
+    background-color: var(--colorPrincipal);
+}
+
+.btn:hover {
+    color: var(--colorPrincipal);
+    background-color: var(--colorSecundario);
+    border: 1px solid var(--colorPrincipal);
+}
+
+/* ================== Footer ================== */
+footer {
+    background-color: var(--colorPrincipal);
+    min-height: 230px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    padding: 40px 20px 0 20px;
+}
+
+footer div {
+    text-align: center;
+}
+
+footer #segundo {
+    padding: 0 50px;
+}
+
+footer h1 {
+    color: var(--colorSecundario);
+    font-size: 100px;
+    margin: 0;
+}
+
+footer #subtitulo {
+    font-size: 27px;
+}
+
+footer p,
+footer a {
+    font-weight: normal;
+    color: var(--colorSecundario);
+    margin: 0;
+}
+
+footer a {
+    font-size: 25px;
+}
