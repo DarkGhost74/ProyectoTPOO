@@ -1,6 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404, redirect
 from django.db.models import Q
 from .models import Poliza
+from .forms import PolizaForm
 from django.contrib.auth.decorators import login_required
 
 @login_required
@@ -25,3 +26,27 @@ def polizas(request):
     else:
         polizas = Poliza.objects.all()
     return render(request, "polizas/polizas.html", {'polizas':polizas})
+
+@login_required
+def poliza_detalle(request, Poliza_id, modo=None):
+    poliza = get_object_or_404(Poliza, id=Poliza_id)
+
+    if request.method == 'GET':
+        form = PolizaForm(instance=poliza)
+        return render(request, 'polizas/poliza_detalle.html', {
+            'poliza': poliza,
+            'form': form,
+            'modo': modo
+        })    
+    else:
+        try:
+            form = PolizaForm(request.POST, instance=poliza)
+            form.save()
+            return redirect('poliza_ver', Poliza_id=Poliza_id)
+        except ValueError:
+            return render(request, 'polizas/poliza_detalle.html', {
+                'poliza': poliza,
+                'form': form,
+                'modo': 'editar',
+                'error': 'Datos inválidos'
+            })

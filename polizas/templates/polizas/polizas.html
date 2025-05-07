@@ -26,8 +26,8 @@
                 <td>{{poliza.agenteid}}</td>
                 <td>{{poliza.clienteid}}</td>
                 <td>{{poliza.tipopolizaid}}</td>
-                <td><a href="vista-libro.html" type="button" class="btn"><i class="bi bi-info-circle"></i> Info</a></td>
-                <td><a href="crear-editar-libro.html" type="button" class="btn"><i class="bi bi-pencil"></i> Editar</a></td>
+                <td><a href="{% url 'poliza_ver' poliza.id %}" type="button" class="btn"><i class="bi bi-info-circle"></i> Info</a></td>
+                <td><a href="{% url 'poliza_editar' poliza.id %}" type="button" class="btn"><i class="bi bi-pencil"></i> Editar</a></td>
             </tr>    
         {% endfor %}
     </tbody>

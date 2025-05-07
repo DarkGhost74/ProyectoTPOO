@@ -26,9 +26,9 @@ def reporte_polizas(request):
             Q(tipopolizaid__nombre__icontains=query) |
             Q(formapagoid__forma__icontains=query) |
             Q(metodopagoid__metodo__icontains=query)
-        )
+        ).order_by('fechafin')
     else:
-        polizas = Poliza.objects.all()
+        polizas = Poliza.objects.all().order_by('fechafin')
     return render(request, "reportes/polizas.html", {'polizas':polizas})
 
 @login_required

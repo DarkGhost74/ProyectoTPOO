@@ -26,5 +26,13 @@ class ClienteForm(ModelForm):
             'numcasa'
         ]
         widgets = {
-            'fechanacimiento': forms.DateInput(attrs={'type': 'date'})
+            'fechanacimiento': forms.DateInput(
+                attrs={'type': 'date'},
+                format='%Y-%m-%d'
+            )
         }
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        if self.instance and self.instance.fechanacimiento:
+            self.fields['fechanacimiento'].initial = self.instance.fechanacimiento.strftime('%Y-%m-%d')
