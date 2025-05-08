@@ -44,9 +44,9 @@ def reporte_AgAs(request):
             Q(agenteid__apellidomaterno__icontains=query) |
             Q(aseguradoraid__id__icontains=query) |
             Q(aseguradoraid__nombre__icontains=query)
-        )
+        ).order_by('agenteid__nombre', 'agenteid__apellidopaterno', 'agenteid__apellidomaterno')
     else:
-        detalles = Detalleagas.objects.all()
+        detalles = Detalleagas.objects.all().order_by('agenteid__nombre', 'agenteid__apellidopaterno', 'agenteid__apellidomaterno')
     return render(request, "reportes/AgAs.html", {'detalles':detalles})
 
 @login_required
@@ -60,7 +60,7 @@ def reporte_AsTP(request):
             Q(aseguradoraid__nombre__icontains=query) |
             Q(tipopolizaid__id__icontains=query) |
             Q(tipopolizaid__nombre__icontains=query)
-        )
+        ).order_by('aseguradoraid__nombre', 'tipopolizaid__nombre')
     else:
-        detalles = Detalleastp.objects.all()
+        detalles = Detalleastp.objects.all().order_by('aseguradoraid__nombre', 'tipopolizaid__nombre')
     return render(request, "reportes/AsTP.html", {'detalles':detalles})

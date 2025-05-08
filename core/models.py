@@ -7,9 +7,8 @@
 # Feel free to rename the models, but don't rename db_table values or field names.
 from django.db import models
 
-
 class Detalleagas(models.Model):
-    agenteid = models.ForeignKey('agentes.Agente', models.DO_NOTHING, db_column='agenteID', primary_key=True, verbose_name='Agente')
+    agenteid = models.ForeignKey('agentes.Agente', models.DO_NOTHING, db_column='agenteID', verbose_name='Agente')
     aseguradoraid = models.ForeignKey('aseguradoras.Aseguradora', models.DO_NOTHING, db_column='aseguradoraID', verbose_name='Aseguradora')
 
     class Meta:
@@ -22,9 +21,8 @@ class Detalleagas(models.Model):
     def __str__(self):
         return f'{self.agenteid} - {self.aseguradoraid}'
 
-
 class Detalleastp(models.Model):
-    aseguradoraid = models.ForeignKey('aseguradoras.Aseguradora', models.DO_NOTHING, db_column='aseguradoraID', primary_key=True, verbose_name='Aseguradora')
+    aseguradoraid = models.ForeignKey('aseguradoras.Aseguradora', models.DO_NOTHING, db_column='aseguradoraID', verbose_name='Aseguradora')
     tipopolizaid = models.ForeignKey('polizas.Tipopoliza', models.DO_NOTHING, db_column='tipoPolizaID', verbose_name='Tipo de póliza')
     comision = models.DecimalField(max_digits=10, decimal_places=2)
 
