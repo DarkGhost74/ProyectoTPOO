@@ -1,6 +1,5 @@
 from django.db import models
 
-
 class Agente(models.Model):
     id = models.AutoField(db_column='ID', primary_key=True, verbose_name='ID')  # Field name made lowercase.
     nombre = models.CharField(max_length=50, verbose_name='Nombre')

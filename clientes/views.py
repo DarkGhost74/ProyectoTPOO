@@ -15,26 +15,10 @@ def clientes(request):
             appaterno__icontains=query
         ) | Cliente.objects.filter(
             apmaterno__icontains=query
-        )
+        ).order_by('nombre', 'appaterno', 'apmaterno')
     else:
-        clientes = Cliente.objects.all()
+        clientes = Cliente.objects.all().order_by('nombre', 'appaterno', 'apmaterno')
     return render(request, "clientes/clientes.html", {'clientes':clientes})
-
-@login_required
-def crear_cliente(request):
-    if request.method == 'GET':
-        return render(request, 'clientes/crear.html', {'form': ClienteForm})
-    else:
-        try:
-            form = ClienteForm(request.POST)
-            nuevo_cliente = form.save(commit=False)
-            nuevo_cliente.save()
-            return redirect('clientes')
-        except ValueError:
-            return render(request, 'clientes/crear.html', {
-                'form': ClienteForm,
-                'error': 'Datos inválidos'
-            })
         
 @login_required
 def cliente_detalle(request, Cliente_id, modo=None):
@@ -46,7 +30,7 @@ def cliente_detalle(request, Cliente_id, modo=None):
             'cliente': cliente,
             'form': form,
             'modo': modo
-        })    
+        })
     else:
         try:
             form = ClienteForm(request.POST, instance=cliente)

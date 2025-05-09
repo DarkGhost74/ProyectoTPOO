@@ -10,7 +10,7 @@ def aseguradoras(request):
             id__icontains=query
         ) | Aseguradora.objects.filter(
             nombre__icontains=query
-        )
+        ).order_by('nombre')
     else:
-        aseguradoras = Aseguradora.objects.all()
+        aseguradoras = Aseguradora.objects.all().order_by('nombre')
     return render(request, "aseguradoras/aseguradoras.html", {'aseguradoras':aseguradoras})

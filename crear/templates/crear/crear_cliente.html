@@ -1,0 +1,88 @@
+{% extends 'core/base.html' %}
+
+{% load static %}
+
+
+{% block title %}Escoger cliente{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'crear/css/crear.css' %}">
+
+<h1>Crear nueva póliza</h1>
+<div class="card">
+    <div class="card-body">
+        <input type="radio" class="btn-check" name="options-outlined" id="success-outlined" autocomplete="off" checked>
+        <label class="btn" for="success-outlined">Cliente existente</label>
+        <input type="radio" class="btn-check" name="options-outlined" id="danger-outlined" autocomplete="off">
+        <label class="btn" for="danger-outlined">Crear cliente</label>
+
+        <!-- Cliente existente -->
+        <div id="contenido_cliente_existente" class="contenido">
+            <div class="mt-3">
+                <form class="custom-form" method="get">
+                    <button class="custom-form__button">
+                        <svg width="17" height="16" fill="none" xmlns="http://www.w3.org/2000/svg" role="img"
+                            aria-labelledby="search">
+                            <path d="M7.667 12.667A5.333 5.333 0 107.667 2a5.333 5.333 0 000 10.667zM14.334 14l-2.9-2.9"
+                                stroke="currentColor" stroke-width="1.333" stroke-linecap="round" stroke-linejoin="round">
+                            </path>
+                        </svg>
+                    </button>
+                    <input class="custom-form__input" placeholder="Buscar cliente" required type="text" name="q" value="{{ request.GET.q }}">
+                    <button class="custom-form__reset" type="reset">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    </button>
+                </form>
+            </div>
+            
+            {% if clientes %}
+                <table class="table table-hover mt-3">
+                    <thead>
+                        <tr>
+                            <th scope="col">Id</th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Apellido Paterno</th>
+                            <th scope="col">Apellido Materno</th>
+                            <th scope="col">Celular</th>
+                            <th scope="col">Telefono</th>
+                            <th scope="col">Correo</th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody id="contenido">
+                        {% for cliente in clientes %}
+                            <tr>
+                                <th scope="row">{{cliente.id}}</th>
+                                <td>{{cliente.nombre}}</td>
+                                <td>{{cliente.appaterno}}</td>
+                                <td>{{cliente.apmaterno}}</td>
+                                <td>{{cliente.celular}}</td>
+                                <td>{{cliente.telefono}}</td>
+                                <td>{{cliente.correo}}</td>
+                                <td><a href="{% url 'crear_agente' cliente.id %}" type="button" class="btn">Seleccionar</a></td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% else %}
+                <p class="text-danger">No se encontraron resultados</p>
+            {% endif %}
+        </div>
+        
+        <!-- Crear cliente -->
+        <div id="contenido_crear_cliente" class="contenido" style="display:none;">
+            <h2 class="card-title mt-2">Cliente</h2>
+            <form method="POST" action="{% url 'crear' %}">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit">Crear Cliente</button>
+            </form>
+            {{ error }}
+        </div>
+    </div>
+</div>
+<script src="{% static 'crear/js/crear.js' %}"></script>
+{% endblock %}

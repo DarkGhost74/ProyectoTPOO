@@ -1,7 +1,6 @@
 from django.contrib import admin
 from .models import Tipopoliza, Formapago, Metodopago, Poliza
 
-
 @admin.register(Tipopoliza)
 class TipopolizaAdmin(admin.ModelAdmin):
     readonly_fields = ('creado', 'modificado')

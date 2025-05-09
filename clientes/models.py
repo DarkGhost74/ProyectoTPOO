@@ -1,6 +1,5 @@
 from django.db import models
 
-
 class Generocliente(models.Model):
     id = models.AutoField(db_column='ID', primary_key=True, verbose_name='ID')  # Field name made lowercase.
     genero = models.CharField(max_length=50, verbose_name='Genero')
@@ -16,7 +15,6 @@ class Generocliente(models.Model):
 
     def __str__(self):
             return self.genero
-
 
 class Cliente(models.Model):
     id = models.AutoField(db_column='ID', primary_key=True, verbose_name='ID')

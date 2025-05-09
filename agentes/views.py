@@ -14,7 +14,7 @@ def agentes(request):
             apellidopaterno__icontains=query
         ) | Agente.objects.filter(
             apellidomaterno__icontains=query
-        )
+        ).order_by('nombre', 'apellidopaterno', 'apellidomaterno')
     else:
-        agentes = Agente.objects.all()
+        agentes = Agente.objects.all().order_by('nombre', 'apellidopaterno', 'apellidomaterno')
     return render(request, "agentes/agentes.html", {'agentes':agentes})

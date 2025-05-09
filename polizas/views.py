@@ -22,9 +22,9 @@ def polizas(request):
             Q(tipopolizaid__nombre__icontains=query) |
             Q(formapagoid__forma__icontains=query) |
             Q(metodopagoid__metodo__icontains=query)
-        )
+        ).order_by('aseguradoraid__nombre', 'agenteid__nombre', 'agenteid__apellidopaterno', 'agenteid__apellidomaterno', 'clienteid__nombre', 'clienteid__appaterno', 'clienteid__apmaterno')
     else:
-        polizas = Poliza.objects.all()
+        polizas = Poliza.objects.all().order_by('aseguradoraid__nombre', 'agenteid__nombre', 'agenteid__apellidopaterno', 'agenteid__apellidomaterno', 'clienteid__nombre', 'clienteid__appaterno', 'clienteid__apmaterno')
     return render(request, "polizas/polizas.html", {'polizas':polizas})
 
 @login_required

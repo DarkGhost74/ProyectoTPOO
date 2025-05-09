@@ -1,6 +1,5 @@
 from django.db import models
 
-
 class Tipopoliza(models.Model):
     id = models.AutoField(db_column='ID', primary_key=True, verbose_name='ID')  # Field name made lowercase.
     nombre = models.CharField(max_length=50, verbose_name='Nombre')
@@ -19,7 +18,6 @@ class Tipopoliza(models.Model):
     def __str__(self):
             return self.nombre
 
-
 class Formapago(models.Model):
     id = models.AutoField(db_column='ID', primary_key=True, verbose_name='ID')  # Field name made lowercase.
     forma = models.CharField(max_length=50, verbose_name='Forma de pago')
@@ -36,7 +34,6 @@ class Formapago(models.Model):
     def __str__(self):
             return self.forma
 
-
 class Metodopago(models.Model):
     id = models.AutoField(db_column='ID', primary_key=True, verbose_name='ID')  # Field name made lowercase.
     metodo = models.CharField(max_length=50, verbose_name='Método de pago')
@@ -52,7 +49,6 @@ class Metodopago(models.Model):
 
     def __str__(self):
             return self.metodo
-
 
 class Poliza(models.Model):
     id = models.CharField(primary_key=True, max_length=15, verbose_name='ID')

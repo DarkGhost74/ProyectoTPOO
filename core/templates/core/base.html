@@ -37,7 +37,7 @@
                 <a class="{% if request.path|slice:':10' == '/reportes/' %}activo{% endif %}" href="{% url 'reportes' %}">Reportes</a>
             </li>
         </ul>
-        <a class="crear" href="{% url 'polizas' %}"><i class="bi bi-file-earmark-plus-fill"></i> Crear póliza</a>
+        <a class="crear {% if request.path|slice:':7' == '/crear/' %}activo{% endif %}" href="{% url 'crear' %}"><i class="bi bi-file-earmark-plus-fill"></i> Crear póliza</a>
     </nav>
     <!-- NavBar -->
     <div id="superior">

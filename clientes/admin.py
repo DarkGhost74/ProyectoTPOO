@@ -1,7 +1,6 @@
 from django.contrib import admin
 from .models import Cliente, Generocliente
 
-
 @admin.register(Cliente)
 class ClienteAdmin(admin.ModelAdmin):
     readonly_fields = ('creado', 'modificado')
