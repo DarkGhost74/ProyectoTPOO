@@ -30,30 +30,30 @@ venv\Scripts\activate
 ```
 
 ### 5. Instalar requerimientos.
-Para instalar los requerimientos basta con ir a la carpeta del proyecto recién instalado y ejecutar:
+Para instalar los requerimientos basta con tener el entorno virtual activado y ejecutar:
 ```
-pipenv install -r requirements.txt
+pip install -r requirements.txt
 ```
 
 ### 6. Ejecutar el servidor de pruebas.
-Para correr el servidor local se debe de ejecutar en la carpeta del proyecto el comando:
+Para correr el servidor local se debe de ejecutar en el entorno virtual el comando:
 ```
 python manage.py runserver
 ```
 
 ### 7. Editar el código del proyecto.
-Si se desea modificar el código se debe se asegurar que sea con el intérprete de Python del entorno virtual. En VS Code por ejemplo, puede hacerse presionando F1, seleccionar interprete de Python, y seleccionar el interprete local. Si se va a trabajar en VS Code se debe de asegurar tener instaladas las extensiones de Python de Microsoft, Django y Djaneiro. Así como tambien ir a la ruta `File > Preferences > Settings`, en el filtro poner `pylint` y en los Args agregar:
+Si se desea modificar el código se debe se asegurar que sea con el intérprete de Python del entorno virtual. En VS Code por ejemplo, puede hacerse presionando `F1`, seleccionar interprete de Python, y seleccionar el interprete local. Si se va a trabajar en VS Code se debe de asegurar tener instaladas las extensiones de Python de Microsoft, Django y Djaneiro. Así como tambien ir a la ruta `File > Preferences > Settings`, en el filtro poner `pylint` y en los `Args` agregar:
 ```
 "pylint.args": ["--load-plugins", "pylint_django"]
 ```
 
 ## Base de datos
 El proyecto se conecta a una base de datos remota de pruebas alojada en Clever Cloud. Las credenciales de acceso se encuentran en la linea 83 de `ProyectoTPOO/settings.py`.
-Si se desea conectar a la BD mediante terminal puede ejecutar el comando
+Si se desea conectar a la BD mediante terminal puede ejecutar el comando:
 ```
 mysql -h blbobicm5ybh67kjinxc-mysql.services.clever-cloud.com -P 3306 -u uxxuzbyn4sknuup3 -p blbobicm5ybh67kjinxc
 ```
-y escribir la contraseña
+y escribir la contraseña:
 ```
 HWnbIzeSH3zcsx97Bu3M
 ```
