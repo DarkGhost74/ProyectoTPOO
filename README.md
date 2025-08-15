@@ -1,14 +1,19 @@
 # ProyectoTPOO
 Este es el proyecto final del equipo 1 del grupo 004 de Taller de programación orientada a objetos.
 
-El objetivo de este proyecto es simplificar la gestión y manejo de las pólizas de seguro. Los usuarios del proyecto podrán ver y editar las pólizas y usuarios del sistema, así como también ver una lista completa de los agentes y aseguradoras que se encuentran en el sistema. Además, podrán tener acceso a reportes detallados de las pólizas de seguro y las relaciones de los agentes con las aseguradoras, así como de las aseguradoras con los tipos de póliza que maneja cada una. Los usuarios podrán también crear una póliza desde cero pudiendo escoger o crear un usuario para esta y manejar fácilmente los campos requeridos para la creación de esta.
+El objetivo de este proyecto es simplificar la gestión y el manejo de las pólizas de seguro.
+Los usuarios podrán visualizar y editar pólizas y usuarios del sistema, así como acceder a una lista completa de los agentes y aseguradoras registradas.
+Además, tendrán acceso a reportes detallados sobre las pólizas, las relaciones entre agentes y aseguradoras, y las aseguradoras con los tipos de póliza que maneja cada una.
+También será posible crear una póliza desde cero, seleccionando o creando un usuario asociado, y gestionando de forma sencilla todos los campos requeridos para su creación.
 
 ## Instalación y ejecución del servidor de prueba
 Si se desea descargar el proyecto para ejecutarlo localmente en un servidor de pruebas es necesario seguir los siguientes pasos:
+
 ### 1. Instalar Python.
 Es necesario tener instalada la versión 3.13 de Python, si no se tienen instalado Python puede descargarlo [aquí.](https://www.python.org/downloads/) Es importante que verifique que Python y pip estén agregados al path y puedan ejecutarse desde consola.
+
 ### 2. Instalar el proyecto.
-Para instalar el proyecto puede descargarse directamente en un archivo `.zip` o ejecutando en cualquier carpeta desde git Bash:
+Puede descargarlo como archivo `.zip` o clonarlo con Git Bash en cualquier carpeta:
 ``` 
 git clone https://github.com/DarkGhost74/ProyectoTPOO.git
 ```
@@ -41,14 +46,24 @@ Para correr el servidor local se debe de ejecutar en el entorno virtual el coman
 python manage.py runserver
 ```
 
-### 7. Editar el código del proyecto.
-Si se desea modificar el código se debe se asegurar que sea con el intérprete de Python del entorno virtual. En VS Code por ejemplo, puede hacerse presionando `F1`, seleccionar interprete de Python, y seleccionar el interprete local. Si se va a trabajar en VS Code se debe de asegurar tener instaladas las extensiones de Python de Microsoft, Django y Djaneiro. Así como tambien ir a la ruta `File > Preferences > Settings`, en el filtro poner `pylint` y en los `Args` agregar:
+### 7. Crear un super usuario
+El acceso al proyecto está limitado a usuarios registrados.
+Para crear un usuario con privilegios de administrador, ejecute:
+```
+python manage.py createsuperuser
+```
+Siga las instrucciones y, una vez creado, podrá iniciar sesión con ese usuario.
+
+### 8. Editar el código del proyecto.
+Si se desea modificar el código se debe se asegurar que sea con el intérprete de Python del entorno virtual. En VS Code por ejemplo, puede hacerse presionando `F1`, seleccionar interprete de Python, y seleccionar el intérprete local. Si se va a trabajar en VS Code se debe de asegurar tener instaladas las extensiones de Python de Microsoft, Django y Djaneiro.
+
+Además, configure Pylint para Django. Vaya a la ruta `File > Preferences > Settings`, en el filtro poner `pylint` y en los `Args` agregar:
 ```
 "pylint.args": ["--load-plugins", "pylint_django"]
 ```
 
 ## Base de datos
-El proyecto se conecta a una base de datos remota de pruebas alojada en Clever Cloud. Las credenciales de acceso se encuentran en la linea 83 de `ProyectoTPOO/settings.py`.
+El proyecto se conecta a una base de datos remota de pruebas alojada en Clever Cloud. Las credenciales de acceso se encuentran en la línea 83 de `ProyectoTPOO/settings.py`.
 Si se desea conectar a la BD mediante terminal puede ejecutar el comando:
 ```
 mysql -h blbobicm5ybh67kjinxc-mysql.services.clever-cloud.com -P 3306 -u uxxuzbyn4sknuup3 -p blbobicm5ybh67kjinxc
@@ -57,7 +72,7 @@ y escribir la contraseña:
 ```
 HWnbIzeSH3zcsx97Bu3M
 ```
-Teniendo acceso desde terminal se puede verificar más a detalle las tablas de esta. Unicamente las siguientes tablas cuentas con `managed = False` en sus respectivos modelos:
+Teniendo acceso desde terminal se puede verificar más a detalle las tablas de esta. Únicamente las siguientes tablas cuentas con `managed = False` en sus respectivos modelos:
 | Tablas |
 |--------------|
 | agente |
@@ -71,10 +86,10 @@ Teniendo acceso desde terminal se puede verificar más a detalle las tablas de e
 | poliza |
 | tipoPoliza  |
 
-El que los modelos de dichas tablas tengan `managed = False` significa que fueron agregadas manualmente a la BD y unicamente el desarrollador tiene el poder de cambiarlas. Django no tiene el poder de modificarlas o crearlas al ejecutar `python manage.py makemigrations`, para eso se tendría que cambiar el valor a `managed = True`.
+El que los modelos de dichas tablas tengan `managed = False` significa que fueron agregadas manualmente a la BD y únicamente el desarrollador tiene el poder de cambiarlas. Django no tiene el poder de modificarlas o crearlas al ejecutar `python manage.py makemigrations`, para eso se tendría que cambiar el valor a `managed = True`.
 
 ### Crear copia de la BD
-Si se desea crear una copia local de la BD o alojada en otro lado se debe de cambiar el valor `managed = False` a `managed = True` en todos los modelos de las respectivas tablas. Luego se debe de ir a la linea 83 de `ProyectoTPOO/settings.py` y cambiar las credenciales a las de la nueva BD. Despues se debe ejecutar:
+Si se desea crear una copia local de la BD o alojada en otro lado se debe de cambiar el valor `managed = False` a `managed = True` en todos los modelos de las respectivas tablas. Luego se debe de ir a la línea 83 de `ProyectoTPOO/settings.py` y cambiar las credenciales a las de la nueva BD. Después se debe ejecutar:
 ```
 python manage.py makemigrations
 ```
