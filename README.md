@@ -3,10 +3,6 @@
 Sistema de gestión de pólizas de seguro diseñado para simplificar la administración de agentes, aseguradoras, tipos de póliza y clientes.
 
 <p align="center">
-    <img src="https://uziel.app/media/projects/ruja-crm/1.webp" alt="hero"  />
-</p>
-
-<p align="center">
     <img src="https://uziel.app/media/projects/ruja-crm/inicio.webp" alt="hero"  />
 </p>
 
